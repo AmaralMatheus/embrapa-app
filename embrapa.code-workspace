@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../social"
+		},
+		{
+			"path": "../embrapa2"
+		}
+	],
+	"settings": {}
+}
