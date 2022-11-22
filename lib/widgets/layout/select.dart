@@ -90,7 +90,7 @@ class _CustomSelectState extends State<CustomSelect> {
             child: Container(
               child: Text(option['label'])
             ),
-            value: int.parse(option['value']),
+            value: option['value'],
           )).toList()
         ),
       )

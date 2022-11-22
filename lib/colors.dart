@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class Palette {
-  static const primary = Color(0xFF0f418f);
+  static const primary = Color(0xFF1c7f4f);
   static const facebook = Color(0xFF44619d);
   static const twitter = Color(0xFF2aaae0);
 

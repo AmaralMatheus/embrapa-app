@@ -28,8 +28,8 @@ class _DashBoardScreenState extends State<DashboardScreen> {
   dynamic user;
 
   getDataFromAPI () async {
-    dynamic response = await _api.get(endpoint: 'https://agrobit.tiproinformatica.com.br/api/v1/cultivar.php');
-    response = json.decode(response);
+    dynamic response = await _api.get(endpoint: 'https://embrapa.tiproinformatica.com.br/wp-json/api/cultivar');
+    response = response;
     return response;
   }
   
@@ -47,6 +47,7 @@ class _DashBoardScreenState extends State<DashboardScreen> {
         destaques.add(destaque);
       }
     });
+    print(data);
   }
 
   initState() {
@@ -239,7 +240,7 @@ class _DashBoardScreenState extends State<DashboardScreen> {
                           children: [
                             Text(data['cultivar'].where((cultivar) => cultivar['idCultivar'] == destaque['idCultivar']).first['nome'], style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
                             SizedBox(height: 10),
-                            Text(destaque['destaque'], style: TextStyle(color: Colors.white)),
+                            Text(destaque['destaque'].replaceAll('<br />', ''), style: TextStyle(color: Colors.white)),
                           ],
                         )
                       )

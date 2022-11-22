@@ -103,8 +103,9 @@ class _CultivarScreenState extends State<StatefulWidget> {
   }
 
   getDataFromAPI () async {
-    dynamic response = await _api.get(endpoint: 'https://agrobit.tiproinformatica.com.br/api/v1/cultivar.php');
-    response = json.decode(response);
+    dynamic response = await _api.get(endpoint: 'https://embrapa.tiproinformatica.com.br/wp-json/api/cultivar');
+    print(response);
+    response = response;
     return response;
   }
 

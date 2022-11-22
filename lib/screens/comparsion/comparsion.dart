@@ -31,8 +31,8 @@ class ComparsionScreenState extends State<ComparsionScreen> {
             child: CarouselSlider(
               options: CarouselOptions(height: 1500),
               items: [
-                this.cultivar1 != null ? CultivarScreen(isComparing: true, cultivarSelecionado: data['cultivar'].firstWhere((cultivar) => cultivar['idCultivar'] == this.cultivar1.toString())) : null,
-                this.cultivar2 != null ? CultivarScreen(isComparing: true, cultivarSelecionado: data['cultivar'].firstWhere((cultivar) => cultivar['idCultivar'] == this.cultivar2.toString())) : null
+                this.cultivar1 != null ? CultivarScreen(isComparing: true, cultivarSelecionado: data['cultivar'].firstWhere((cultivar) => cultivar['idCultivar'] == this.cultivar1)) : null,
+                this.cultivar2 != null ? CultivarScreen(isComparing: true, cultivarSelecionado: data['cultivar'].firstWhere((cultivar) => cultivar['idCultivar'] == this.cultivar2)) : null
               ],
             ),
           ),
@@ -52,9 +52,8 @@ class ComparsionScreenState extends State<ComparsionScreen> {
                     value: this.cultivar1,
                     getValue: (value) {
                       setState(() {
+                        print(value);
                         this.cultivar1 = value;
-                        print(data['cultivar'][this.cultivar1-1]);
-                        print(data['cultivar'].where((cultivar) => cultivar['idCultivar'] == this.cultivar1.toString()));
                       });
                     },
                     options: data['cultivar'].map((item) => {
@@ -72,6 +71,7 @@ class ComparsionScreenState extends State<ComparsionScreen> {
                     getValue: (value) {
                       setState(() {
                         this.cultivar2 = value;
+                        print(data['cultivar'].firstWhere((cultivar) => cultivar['idCultivar'] == this.cultivar2));
                       });
                     },
                     options: data['cultivar'].map((item) => {

@@ -12,6 +12,7 @@ import 'screens/register/register.dart';
 import 'screens/home/home.dart';
 import 'screens/weather/weather.dart';
 import 'screens/comparsion/comparsion.dart';
+import 'screens/properties/properties.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,8 +41,9 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   final _routes = <String, WidgetBuilder>{
     'splash': (context) => Wrapper(SplashScreen()),
+    'properties': (context) => Wrapper(PropertiesScreen()),
     'initial': (context) => Wrapper(InitialScreen()),
-    'register': (context) => Wrapper(RegisterScreen()),
+    'register': (context) => Wrapper(PropertiesScreen()),
     'home': (context) => Wrapper(HomeScreen()),
     'weather': (context) => Wrapper(WeatherScreen()),
     'profile': (context) => Wrapper(ProfileScreen()),

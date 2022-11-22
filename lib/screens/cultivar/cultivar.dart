@@ -3,7 +3,7 @@ import 'package:embrapa/widgets/layout/scaffold.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import '../../colors.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../../resources/data.dart';
 
 class CultivarScreen extends StatelessWidget {
@@ -279,7 +279,7 @@ class CultivarScreen extends StatelessWidget {
               children: [
                 Center(
                   child: Container(
-                    child: Image.asset('assets/maps/'+cultivar['nome']+'.png')
+                    child: CachedNetworkImage(imageUrl: cultivar['urlImagem'])
                   ) 
                 ),
                 Container(
@@ -384,7 +384,7 @@ class CultivarScreen extends StatelessWidget {
               vertical: 10
             ),
             alignment: Alignment.centerLeft,
-            child: Text('Onde Comprar', style: TextStyle(
+            child: Text('Onde Encontrar', style: TextStyle(
               fontSize: 22,
               fontWeight: FontWeight.w500
             )),
@@ -406,25 +406,41 @@ class CultivarScreen extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width,
-                  alignment: Alignment.centerLeft, padding: EdgeInsets.symmetric(vertical: 15),
+                  alignment: Alignment.centerLeft,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [data['epocaSemeadura'].map<Widget>((doenca) => doenca['idCultivar'] == cultivar['idCultivar'] ? Container(
+                    children: [
+                      {'nome': 'Coamo', 'website': 'www.coamo.com.br/site/servicos/sementes', 'phone': '(44) 3599-8000'},
+                      {'nome': 'Cooperativa Agrária', 'website': 'www.agraria.com.br/sementes/produtos', 'phone': '(42) 3625-8000'},
+                      {'nome': 'Cooperativa Agrícola Mista São Cristóvão', 'website': 'www.camic.com.br/site', 'phone': '(46) 3226-8300'}
+                    ].map((seller) => Container(
+                      margin: EdgeInsets.symmetric(vertical: 5),
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5),
+                        color: Colors.black12
+                      ),
                       child: Row (
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Container(
+                            margin: EdgeInsets.symmetric(vertical:10),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(doenca['nome'].replaceAll('; ', '\n')),
+                                Text(seller['nome'].replaceAll('; ', '\n'), style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500
+                                )),
+                                Text(seller['phone'].replaceAll('; ', '\n')),
+                                Text(seller['website'].replaceAll('; ', '\n')),
                               ],
                             )
                           ),
                         ],
                       )
-                    ) : SizedBox()).first]
-                  )
+                    )
+                  ).toList())
                 ),
                 // Container(
                 //   child: Row(
@@ -641,7 +657,8 @@ class CultivarScreen extends StatelessWidget {
               ),
               Center(
                 child: Container(
-                  child: Image.asset('assets/maps/'+cultivar['nome']+'.png')
+                  height: 200,
+                  child: CachedNetworkImage(imageUrl: cultivar['urlImagem'])
                 ) 
               ),
               Container(

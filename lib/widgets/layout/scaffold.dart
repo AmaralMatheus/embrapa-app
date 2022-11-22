@@ -40,13 +40,7 @@ class CustomScaffold extends StatelessWidget {
     backgroundColor: WidgetsBinding.instance.window.platformBrightness == Brightness.light ? Colors.white : Colors.black,
     body: this.body,
     drawer: this.drawer,
-    floatingActionButton: floatingActionButton != null ? FloatingActionButton(
-      backgroundColor: Palette.primary,
-      onPressed: () => {
-        openScaffold(context)
-      },
-      child: floatingActionButton,
-    ) : null,
+    floatingActionButton: floatingActionButton != null ? floatingActionButton : null,
     floatingActionButtonLocation: floatingActionButtonLocation,
     bottomNavigationBar: bottomBar ? CustomBottomNavigationBar(
       color: Palette.primary,
